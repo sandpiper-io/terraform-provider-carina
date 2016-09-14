@@ -99,7 +99,7 @@ resource "carina_cluster" "test1" {
 #### Parameters
 
 * `name`: Required. The name of the cluster.
-* `nodes`: Optional. The number of nodes in the cluster.
+* `nodes`: Optional. The number of nodes in the cluster.  Note that the Carina API only has a grow verb no shrink so decreasing the node count doesn't do anything. 
 
 
 #### Exported Parameters

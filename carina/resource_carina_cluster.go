@@ -130,6 +130,8 @@ func resourceCarinaClusterDelete(d *schema.ResourceData, meta interface{}) error
 		_, err = client.Get(clusterName)
 		if err == nil {
 			break
+		} else {
+			log.Print(err)
 		}
 	}
 
