@@ -28,7 +28,7 @@ $ go install github.com/sandpiper-io/terraform-provider-carina
 
 ```shell
 providers {
-    "carina" = "YOUR_GOPATH/bin/terraform-provider-carina"
+    carina = "YOUR_GOPATH/bin/terraform-provider-carina"
 }
 ```
 

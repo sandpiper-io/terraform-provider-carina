@@ -125,17 +125,7 @@ func resourceCarinaClusterDelete(d *schema.ResourceData, meta interface{}) error
 
 	_, err := client.Delete(clusterName)
 
-	for  {
-		time.Sleep(2 * time.Second)
-		_, err = client.Get(clusterName)
-		if err == nil {
-			break
-		} else {
-			log.Print(err)
-		}
-	}
-
-	return nil
+	return err
 }
 
 func DownloadCredentials(client *libcarina.ClusterClient, clusterName string) (string, string, error) {
