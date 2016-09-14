@@ -5,7 +5,7 @@ Carina provider for Terraform.  Can be used with the Terraform Docker provider t
 
 ### Requirements
 
-1. [Terraform](http://terraform.io). Make sure you have it installed and it's accessible from your `$PATH`.
+1. [Terraform](https://www.terraform.io/downloads.html). Make sure you have it installed and it's accessible from your `$PATH`.
 2. [Carina Login](https://getcarina.com/) and API key.  
 
 ### Build From Source
