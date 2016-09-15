@@ -1,6 +1,8 @@
 # terraform-provider-carina
 Carina provider for Terraform.  Can be used with the Terraform Docker provider to build Carina cluseters and then provision Docker swarms within the Carina cluster (with a small caveat see below).
 
+The documentation from Hashi about provider plugins wasn't the best.  You can [read more](writing_a_provider.md) about the experience.
+
 ## Installation
 
 ### Requirements
