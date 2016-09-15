@@ -43,6 +43,26 @@ providers {
 
 My main.go file is simple and looks like [this](main.go).  It imports the terraform plugin api and my package and passes the main entry point to my package back to terraform.  (The connection between a plugin and the terraform commandline is through http so the plugin library is doing some magic under the hood here.)
 
-The meet of the provide is in the [carina package](carina).  The [Provider](carina/provider.go) (class?) passes back a structure when instantiated that defines its parameters, the resources that it provides, and its configuration function.  The configuration function defined in [config.go](carina/config.go) is where the Carina API client is created.
+## Coding
+
+The meat of the provider is in the [carina package](carina).  The [Provider](carina/provider.go#L10) (class?) passes back a structure when instantiated that defines its [parameters](carina/provider.go#L12), the [resources](carina/provider.go#L27) that it provides, and its [configuration function](carina/provider.go#L35).  The configuration function defined in [config.go](carina/config.go) is where the Carina API client is created.
  
- [test](carina/provider.go#L47)
+Creating, refreshing, updating, and deleting a cluster is all handled in the [resource_carina_cluster.go](carina/resource_carina_cluster.go).  These entry are provided by the resource constructor and are well documented in the [Terraform docs for providers](https://www.terraform.io/docs/plugins/provider.html).
+
+## Debugging
+
+Make sure you setup a [test structure](carina/provider_test.go) for your provider as recommended in the documentation.  Once this is setup you can run the tests from the commandline with `go test`.  
+
+```shell
+$ cd $GOPATH/src/github.com/sandpiper-io/terraform-provider-carina
+$ go test ./carina
+ok  	github.com/sandpiper-io/terraform-provider-carina/carina	0.017s
+```
+
+You may also find that your plugin crashes the terraform commandline.  Turning on logging was helpful here so that you can add print statements to help isolate the problem.  The terraform docs have more on [debugging](https://www.terraform.io/docs/internals/debugging.html).
+
+```shell
+$ export TF_LOG=TRACE
+```
+
+I looked around for a good go debugger but wasn't able to set anything up quick enough for it to be worth it. 
