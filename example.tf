@@ -14,7 +14,6 @@ provider "docker" {
 # Create the network for our system
 resource "docker_network" "mynetwork" {
   name = "${var.network_name}"
-  depends_on = ["carina_cluster.test"]
 }
 
 # Create, start, and initialize the database
